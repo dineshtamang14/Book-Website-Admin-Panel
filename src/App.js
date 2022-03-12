@@ -17,11 +17,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        {!admin && (
-          <Route path="/login">
-            <Login />
-          </Route>
-        )}
+      <Route path="/login">
+          <Login />
+        </Route>
         {admin && (
           <>
             <Topbar />

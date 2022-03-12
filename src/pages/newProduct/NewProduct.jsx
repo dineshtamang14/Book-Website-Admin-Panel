@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./newProduct.css";
 import {
   getStorage,
@@ -15,6 +16,7 @@ export default function NewProduct() {
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState([]);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (e) => {
     setInputs((prev) => {
@@ -66,6 +68,7 @@ export default function NewProduct() {
         });
       }
     );
+    history.push("/");
   };
 
   return (

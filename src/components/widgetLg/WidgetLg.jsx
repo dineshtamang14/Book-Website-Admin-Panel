@@ -11,6 +11,7 @@ export default function WidgetLg() {
       try {
         const res = await userRequest.get("orders");
         setOrders(res.data);
+        console.log(res.data);
       } catch {}
     };
     getOrders();

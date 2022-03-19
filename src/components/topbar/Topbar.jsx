@@ -9,7 +9,7 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <Link to="/">
+          <Link to="/" style={{textDecoration: "none", color: "black"}}>
           <span className="logo">Book Website Admin</span>
           </Link>
         </div>

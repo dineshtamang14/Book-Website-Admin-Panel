@@ -1,6 +1,7 @@
 import React from "react";
 import "./topbar.css";
 import {logout} from "../../redux/userRedux";
+import {Link} from "react-router-dom";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
 
 export default function Topbar() {
@@ -8,7 +9,9 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
+          <Link to="/">
           <span className="logo">Book Website Admin</span>
+          </Link>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
@@ -28,7 +31,7 @@ export default function Topbar() {
             className="topAvatar"
           />
           <div className="topbarIconContainer" style={{marginLeft: "10px"}}>
-            <button onClick={logout}>Log Out</button>
+            <button className={{border: "none", outline: "none"}} onClick={logout}>Log Out</button>
           </div>
         </div>
       </div>

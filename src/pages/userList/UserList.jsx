@@ -57,7 +57,6 @@ export default function UserList() {
       headerName: "Action",
       width: 150,
       renderCell: (params) => {
-        console.warn(params.row);
         return (
           <>
             <Link to={"/user/" + params.row._id}>

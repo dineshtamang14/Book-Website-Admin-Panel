@@ -6,10 +6,34 @@ import {
   PhoneAndroid,
   Publish,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { userRequest } from "../../requestMethods";
+import { Link, useLocation } from "react-router-dom";
 import "./user.css";
 
 export default function User() {
+  const location = useLocation();
+  const customerId = location.pathname.split("/")[2];
+
+  const customer = useSelector((state) =>
+    state.customer.customers.find((customer) => customer._id === customerId)
+  );
+
+  useEffect(() => {
+    const getStats = async () => {
+      try {
+        const res = await userRequest.get("users/find/" + customerId);
+        // eslint-disable-next-line
+        const list = res.data;
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getStats();
+  }, [customerId]);
+
+
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -27,7 +51,7 @@ export default function User() {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Anna Becker</span>
+              <span className="userShowUsername">{customer.name ? customer.name : "unkown customer"}</span>
               <span className="userShowUserTitle">Software Engineer</span>
             </div>
           </div>
@@ -35,7 +59,7 @@ export default function User() {
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99</span>
+              <span className="userShowInfoTitle">{customer.username}</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
@@ -44,15 +68,15 @@ export default function User() {
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
               <PhoneAndroid className="userShowIcon" />
-              <span className="userShowInfoTitle">+1 123 456 67</span>
+              <span className="userShowInfoTitle">{customer.number ? customer.number : "Not Known"}</span>
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99@gmail.com</span>
+              <span className="userShowInfoTitle">{customer.email}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">New York | USA</span>
+              <span className="userShowInfoTitle">{customer.address ? customer.address : "Mumbai | India"}</span>
             </div>
           </div>
         </div>
@@ -64,7 +88,7 @@ export default function User() {
                 <label>Username</label>
                 <input
                   type="text"
-                  placeholder="annabeck99"
+                  placeholder={customer.username}
                   className="userUpdateInput"
                 />
               </div>
@@ -72,7 +96,7 @@ export default function User() {
                 <label>Full Name</label>
                 <input
                   type="text"
-                  placeholder="Anna Becker"
+                  placeholder={customer.name ? customer.name : "unkown"}
                   className="userUpdateInput"
                 />
               </div>
@@ -80,7 +104,7 @@ export default function User() {
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="annabeck99@gmail.com"
+                  placeholder={customer.email}
                   className="userUpdateInput"
                 />
               </div>
@@ -88,7 +112,7 @@ export default function User() {
                 <label>Phone</label>
                 <input
                   type="text"
-                  placeholder="+1 123 456 67"
+                  placeholder={customer.number ? customer.number: "unkown"}
                   className="userUpdateInput"
                 />
               </div>
@@ -96,7 +120,7 @@ export default function User() {
                 <label>Address</label>
                 <input
                   type="text"
-                  placeholder="New York | USA"
+                  placeholder={customer.address ? customer.address : "Mumbai | India"}
                   className="userUpdateInput"
                 />
               </div>
@@ -105,8 +129,8 @@ export default function User() {
               <div className="userUpdateUpload">
                 <img
                   className="userUpdateImg"
-                  src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                  alt=""
+                  src={customer.img}
+                  alt="customer-img"
                 />
                 <label htmlFor="file">
                   <Publish className="userUpdateIcon" />

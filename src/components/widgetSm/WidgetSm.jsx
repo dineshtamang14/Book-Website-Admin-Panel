@@ -34,7 +34,7 @@ export default function WidgetSm() {
             <div className="widgetSmUser">
               <span className="widgetSmUsername">{user.username}</span>
             </div>
-            <Link to={`/user/:${user._id}`}>
+            <Link to={`/user/${user._id}`}>
             <button className="widgetSmButton">
               <Visibility className="widgetSmIcon" />
               Display

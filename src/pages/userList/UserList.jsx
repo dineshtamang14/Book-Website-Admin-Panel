@@ -18,13 +18,6 @@ export default function UserList() {
   const handleDelete = (id) => {
     deleteCustomer(id, dispatch);
   };
-
-
-  // const [data, setData] = useState(userRows);
-
-  // const handleDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
   
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },

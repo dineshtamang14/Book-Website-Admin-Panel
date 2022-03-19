@@ -7,8 +7,8 @@ import {
   Publish,
 } from "@material-ui/icons";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { userRequest } from "../../requestMethods";
+// import { useEffect } from "react";
+// import { userRequest } from "../../requestMethods";
 import { Link, useLocation } from "react-router-dom";
 import "./user.css";
 
@@ -20,18 +20,18 @@ export default function User() {
     state.customer.customers.find((customer) => customer._id === customerId)
   );
 
-  useEffect(() => {
-    const getStats = async () => {
-      try {
-        const res = await userRequest.get("users/find/" + customerId);
-        // eslint-disable-next-line
-        const list = res.data;
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getStats();
-  }, [customerId]);
+  // useEffect(() => {
+  //   const getStats = async () => {
+  //     try {
+  //       const res = await userRequest.get("users/find/" + customerId);
+  //       // eslint-disable-next-line
+  //       const list = res.data;
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getStats();
+  // }, [customerId]);
 
 
   return (
@@ -46,8 +46,8 @@ export default function User() {
         <div className="userShow">
           <div className="userShowTop">
             <img
-              src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
+              src={customer.img}
+              alt="customer-img"
               className="userShowImg"
             />
             <div className="userShowTopTitle">

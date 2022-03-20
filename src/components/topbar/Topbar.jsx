@@ -1,10 +1,17 @@
 import React from "react";
 import "./topbar.css";
-import {logout} from "../../redux/userRedux";
 import {Link} from "react-router-dom";
+import { toast } from "react-toastify";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import LogoutIcon from '@mui/icons-material/Logout'
 
 export default function Topbar() {
+  const logout = () => {
+    toast("Logout successfull", { type: "success" });
+    localStorage.removeItem("persist:root");
+    window.location.href = '/';
+  }
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -31,7 +38,7 @@ export default function Topbar() {
             className="topAvatar"
           />
           <div className="topbarIconContainer" style={{marginLeft: "10px"}}>
-            <button className={{border: "none", outline: "none"}} onClick={logout}>Log Out</button>
+            <button style={{border: "none", outline: "none", background: "none", cursor: "pointer"}} onClick={logout}><LogoutIcon /></button>
           </div>
         </div>
       </div>

@@ -82,7 +82,7 @@ export default function Product() {
             </div>
             <div className="productInfoItem">
               <span className="productInfoKey">in stock:</span>
-              <span className="productInfoValue">{product.inStock}</span>
+              <span className="productInfoValue">{product.inStock ? "1000": "0"}</span>
             </div>
           </div>
         </div>

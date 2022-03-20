@@ -74,7 +74,7 @@ export default function NewProduct() {
   
       Promise.all(promises)
         .then(() => {
-          toast("Article added successfully", { type: "success" });
+          toast("Book added successfully", { type: "success" });
         })
         .catch((err) => console.log(err));
   };
@@ -120,7 +120,6 @@ export default function NewProduct() {
   if(urls.length === 2){
     const product = { ...inputs, img: urls[0], pdf: urls[1], categories: cat };
     addProduct(product, dispatch);
-    toast("Article added successfully", { type: "success" });
     setUrls([]);
     setFiles([]);
     history.push("/");

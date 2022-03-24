@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://dinesh-book-api.herokuapp.com";
+const BASE_URL = "https://zzum9jzdp2.execute-api.ap-south-1.amazonaws.com/dev
+";
 
 // const TOKEN =
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjcyYmY3ZjA2YzU4ZDk4ZWI0YzcyMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NjczNDMzMywiZXhwIjoxNjQ2ODIwNzMzfQ.Pq-MXCeHLpYcIXJyBUriYQ1X8qcNTC38Rt_2n7Ua7Mg";
